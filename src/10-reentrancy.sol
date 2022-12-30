@@ -1,6 +1,6 @@
 pragma solidity ^0.8;
 
-interface IReentrance {
+interface IReentrancy {
     function donate(address) external payable;
     function withdraw(uint256) external;
 }
