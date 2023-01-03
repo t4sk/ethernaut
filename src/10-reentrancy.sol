@@ -6,10 +6,10 @@ interface IReentrancy {
 }
 
 contract Hack {
-    IReentrance private immutable target;
+    IReentrancy private immutable target;
 
     constructor(address _target) {
-        target = IReentrance(_target);
+        target = IReentrancy(_target);
     }
 
     // NOTE: attack cannot be called inside constructor
