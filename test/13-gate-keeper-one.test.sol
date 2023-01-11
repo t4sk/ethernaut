@@ -11,7 +11,7 @@ contract TestGateKeeperOne is Test {
     Hack private hack;
 
     function setUp() public {
-        target = IGateKeeperOne(0x29c1d735c2762355D5f667bcF2646E9C07C23443);
+        target = IGateKeeperOne(0x037e210a2575f2f57207540c3a33AF1C03Eaef39);
         // target = new GatekeeperOne();
         hack = new Hack();
     }
