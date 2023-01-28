@@ -15,7 +15,7 @@ contract Hack {
         address addr;
         assembly {
             // create(value, offset, size)
-            addr := create(0, add(bytecode, 0x20), 0x16)
+            addr := create(0, add(bytecode, 0x20), 0x13)
         }
         require(addr != address(0));
 
