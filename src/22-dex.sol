@@ -35,8 +35,9 @@ contract Hack {
     // 24 in  |  86 | 110 | 30 out
     // 41 out | 110 |  80 | 30 in
     // 41 in  |  69 | 110 | 65 out
-    //        | 110 |  45 |
+    //        | 110 |  45 | 45 in
 
+    // math for last swap
     // 110 = token2 amount in * token1 balance / token2 balance
     // 110 = token2 amount in * 110 / 45
     // 45  = token2 amount in
